@@ -1,13 +1,12 @@
 import type { Metadata } from 'next'
-import { ClerkProvider } from '@clerk/nextjs'
 import { Inter } from 'next/font/google'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'EduJoy',
-  description: 'Making learning fun + Help in learning through GenAi',
+  title: 'EcoLearn - Gamified Environmental Education',
+  description: 'Transforming environmental education through gamification and AI. Learn sustainability, climate action, and eco-friendly practices in an engaging way.',
 }
 
 export default function RootLayout({
@@ -16,10 +15,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className={`${inter.className} backg`}>{children}</body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <body className={`${inter.className} backg`}>{children}</body>
+    </html>
   )
 }

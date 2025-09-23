@@ -1,288 +1,98 @@
-// @ts-nocheck
 "use client";
-import Image from "next/image";
-import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+
 import { useEffect, useState } from "react";
-import { Progress } from "@/components/ui/progress";
-import { Card } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
-import Markdown from "react-markdown";
-import React from "react";
-import { Button } from "@/components/ui/button";
-import { useRef } from "react";
-import {
-  useRive,
-  RiveState,
-  useStateMachineInput,
-  StateMachineInput,
-  Layout,
-  Fit,
-  Alignment,
-} from "rive-react";
-import styles from "@/styles/styles.module.css";
-import "@/styles/LoginFormComponent.css";
-import Confetti from "@/components/Confetti";
+import { useParams, useRouter } from "next/navigation";
+import EnhancedQuiz from "@/components/EnhancedQuiz";
+import { getQuizForCourse } from "@/data/quizData";
+import { saveUserScore } from "@/utils/userManagement";
 
-export default function Page({ params }: { params: { name: string } }) {
-  const name = params.name;
+interface UserData {
+  username: string;
+  email: string;
+  loginTime: string;
+}
 
-  // const [score, setScore] = useState(0);
-  const [score, setScore] = useState(0);
-  const [count, setCount] = useState(0);
-  const [chosen, setChosen] = useState();
-  const [content, setContent] = useState();
-  const [question, setQuestion] = useState();
-  const [progress, setProgress] = useState(10);
+export default function QuizPage() {
+  const params = useParams();
+  const router = useRouter();
+  const [user, setUser] = useState<UserData | null>(null);
+  const [quizData, setQuizData] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const [inputLookMultiplier, setInputLookMultiplier] = useState(0);
-  const inputRef = useRef(null);
-
-  const [response, setResponse] = useState("");
-  const [output, setOutput] = useState("The response will appear here...");
-
-  const onSubmit = async () => {
-    // clear the output
-    setOutput("The response will appear here...");
-
-    // create a post request to the /api/chat endpoint
-    const response = await fetch("/api/chat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        userPrompt: `hello I have obtained a score of ${score}/${content?.questions.length} in ${name} based on my performance I would like to learn ${name} can you suggest me a learning path?`,
-      }),
-    });
-
-    // get the response from the server
-    const data = await response.json();
-    // set the response in the state
-    setResponse(data.text);
-  };
+  const courseName = params.name as string;
 
   useEffect(() => {
-    // update the response character by character in the output
-    if (response.length === 0) return;
-
-    setOutput("");
-
-    for (let i = 0; i < response.length; i++) {
-      setTimeout(() => {
-        setOutput((prev) => prev + response[i]);
-      }, i * 10);
-    }
-  }, [response]);
-
-  const STATE_MACHINE_NAME = "Login Machine";
-
-  useEffect(() => {
-    if (inputRef?.current && !inputLookMultiplier) {
-      setInputLookMultiplier(inputRef.current.offsetWidth / 100);
-    }
-  }, [inputRef]);
-
-  const { rive: riveInstance, RiveComponent }: RiveState = useRive({
-    src: "/bear.riv",
-    stateMachines: STATE_MACHINE_NAME,
-    autoplay: true,
-    layout: new Layout({
-      fit: Fit.Cover,
-      alignment: Alignment.Center,
-    }),
-  });
-
-  // State Machine Inputs
-  const trigSuccessInput: StateMachineInput = useStateMachineInput(
-    riveInstance,
-    STATE_MACHINE_NAME,
-    "trigSuccess"
-  );
-  const trigFailInput: StateMachineInput = useStateMachineInput(
-    riveInstance,
-    STATE_MACHINE_NAME,
-    "trigFail"
-  );
-  const isHandsUpInput: StateMachineInput = useStateMachineInput(
-    riveInstance,
-    STATE_MACHINE_NAME,
-    "isHandsUp"
-  );
-
-  // read the file from the file system with the `name`
-  const readFile = async (name: string) => {
-    const markdown = await import(`@/data/${name}.d.ts`);
-    return markdown.data;
-  };
-
-  const onNext = () => {
-    setProgress(progress + 10);
-
-    setCount(count + 1);
-
-    if (question?.correctOption == chosen) {
-      setScore(score + 1);
-      trigSuccessInput.fire();
-    } else {
-      trigFailInput.fire();
-    }
-
-    setQuestion(content?.questions[count + 1]);
-
-    if (progress >= 100) {
-      onSubmit();
+    console.log('🎯 Quiz Page Debug:');
+    console.log('  URL param name:', params.name);
+    console.log('  courseName:', courseName);
+    
+    // Check if user is authenticated
+    const userData = localStorage.getItem("ecolearn_user");
+    if (!userData) {
+      router.push("/auth");
       return;
     }
+    
+    try {
+      const parsedUser = JSON.parse(userData);
+      setUser(parsedUser);
+    } catch (error) {
+      console.error("Error parsing user data:", error);
+      router.push("/auth");
+      return;
+    }
+
+    // Load quiz data for the course
+    const quiz = getQuizForCourse(courseName);
+    setQuizData(quiz);
+    setLoading(false);
+  }, [courseName, router]);
+
+  const handleQuizComplete = (finalScore: number) => {
+    if (!user) return;
+
+    // Calculate percentage score
+    const totalPossible = quizData.length + 4; // questions + max game points
+    const percentage = (finalScore / totalPossible) * 100;
+
+    // Save score to localStorage for leaderboard
+    saveUserScore(user.username, courseName, percentage, finalScore, totalPossible);
+
+    console.log(`Quiz completed! Score: ${finalScore}/${totalPossible} (${percentage.toFixed(1)}%)`);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const content = await readFile(name);
-        setQuestion(content?.questions[0]);
-        setContent(content);
-      } catch (error) {
-        console.error("Error reading file:", error);
-      }
-    };
-    fetchData();
-  }, [name]);
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-500 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading quiz...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-800 mb-4">Please Login</h1>
+          <p className="text-gray-600 mb-6">You need to be logged in to take quizzes.</p>
+          <button
+            onClick={() => router.push("/auth")}
+            className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700"
+          >
+            Go to Login
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="around">
-      {progress < 110 ? (
-        <>
-          <div className="rive-container">
-            <div className="rive-wrapper">
-              <RiveComponent className="rive-container" />
-            </div>
-          </div>
-          <div className="flex flex-col mt-5 items-center h-screen gap-6">
-            <Progress value={progress} className={cn("w-[60%]")} />
-            <div className="w-[60%] flex justify-center">
-              <h1 className="text-2xl font-bold">{question?.question}</h1>
-            </div>
-
-            <RadioGroup defaultValue="comfortable">
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem
-                  value={question?.options[0]}
-                  id="r1"
-                  onClick={(e) => {
-                    setChosen(e.target.value);
-                  }}
-                />
-                <Label htmlFor="r1">{question?.options[0]}</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem
-                  value={question?.options[1]}
-                  id="r2"
-                  onClick={(e) => {
-                    setChosen(e.target.value);
-                  }}
-                />
-                <Label htmlFor="r2">{question?.options[1]}</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem
-                  value={question?.options[2]}
-                  id="r3"
-                  onClick={(e) => {
-                    setChosen(e.target.value);
-                  }}
-                />
-                <Label htmlFor="r3">{question?.options[2]}</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem
-                  value={question?.options[3]}
-                  id="r4"
-                  onClick={(e) => {
-                    setChosen(e.target.value);
-                  }}
-                />
-                <Label htmlFor="r4">{question?.options[3]}</Label>
-              </div>
-            </RadioGroup>
-            <Button
-              onClick={() => {
-                onNext();
-              }}
-            >
-              {progress <= 110 ? "Next" : "Submit"}
-            </Button>
-          </div>
-        </>
-      ) : (
-        <div className="flex flex-col items-center h-screen gap-6">
-          <h1 className="text-2xl mt-2 font-bold">
-            You scored {score} out of {content?.questions.length}
-          </h1>
-          <Button
-            onClick={() => {
-              setProgress(10);
-              setScore(0);
-              setCount(0);
-              setQuestion(content?.questions[0]);
-            }}
-          >
-            Restart
-          </Button>
-          {score > 6 && (
-            <>
-              <Confetti />
-              <div className="flex items-center flex-col gap-5">
-                <h1 className="text-2xl font-bold">
-                  Congratulations! You have obtained a{" "}
-                  <span className="font-black text-red-500">Gold medal</span>
-                </h1>
-                <Image src="/icons/goldmedal.svg" width={100} height={100} />
-              </div>
-            </>
-          )}
-          {score > 2 && score <= 6 && (
-            <>
-              <Confetti />
-              <div className="flex items-center flex-col gap-5">
-                <h1 className="text-2xl font-bold">
-                  Congratulations! You have obtained a{" "}
-                  <span className="font-black text-red-500">Silver Medal</span>
-                </h1>
-                <Image src="/icons/silvermedal.svg" width={100} height={100} />
-              </div>
-            </>
-          )}
-          {score <= 2 && (
-            <>
-              <Confetti />
-              <div className="flex items-center flex-col gap-5">
-                <h1 className="text-2xl font-bold">
-                  Congratulations! You have obtained a{" "}
-                  <span className="font-black text-red-500">Bronze Medal</span>
-                </h1>
-                <Image src="/icons/bronzemedal.svg" width={100} height={100} />
-              </div>
-            </>
-          )}
-          <h1 className="text-1xl font-bold mt-1">
-            Based on you performance we are creating a learning path to learn{" "}
-            <span className="text-red-500">{name}</span>
-          </h1>
-          <Card
-            className={cn(
-              "p-5 whitespace-normal min-w-[320px] sm:w-[500px] md:min-w-[600px]"
-            )}
-          >
-            <div className={styles.textwrapper}>
-              <Markdown
-                className={cn("w-full h-full ")}
-              >{`${output}`}</Markdown>
-            </div>
-          </Card>
-        </div>
-      )}
-    </div>
+    <EnhancedQuiz
+      courseName={courseName}
+      questions={quizData}
+    />
   );
 }

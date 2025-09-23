@@ -6,7 +6,17 @@ export async function POST(req: NextRequest) {
   // get prompt field from the request body
   const reqBody = await req.json();
   const { userPrompt } = reqBody;
-  const prompt = userPrompt;
+  
+  // Add environmental education context to the prompt
+  const environmentalContext = `You are EcoChat, an AI assistant specialized in environmental education and sustainability. 
+  Focus on topics like climate change, renewable energy, waste management, water conservation, biodiversity, 
+  sustainable living practices, and environmental science. Provide practical, actionable advice aligned with 
+  UN Sustainable Development Goals and India's environmental policies. Always encourage eco-friendly behaviors 
+  and real-world environmental action.
+  
+  User Question: `;
+  
+  const prompt = environmentalContext + userPrompt;
   const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY as string);
   const model = genAI.getGenerativeModel({
     model: "gemini-pro",

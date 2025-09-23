@@ -1,21 +1,66 @@
 "use client";
 
-import { UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import styles from "@/styles/Root.module.css";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
-export default function HomeLayout({
+interface UserData {
+  username: string;
+  email: string;
+  loginTime: string;
+}
+
+export default function ContactLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   const [showMenu, setShowMenu] = useState(false);
+  const [user, setUser] = useState<UserData | null>(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    // Check if user is authenticated
+    const userData = localStorage.getItem("ecolearn_user");
+    if (!userData) {
+      router.push("/auth");
+      return;
+    }
+    
+    try {
+      const parsedUser = JSON.parse(userData);
+      setUser(parsedUser);
+    } catch (error) {
+      console.error("Error parsing user data:", error);
+      router.push("/auth");
+    }
+  }, [router]);
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
+
+  const handleLogout = () => {
+    localStorage.removeItem("ecolearn_user");
+    toast.success("Logged out successfully!");
+    setTimeout(() => {
+      router.push("/auth");
+    }, 1000);
+  };
+
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={`${showMenu ? "overflow-hidden h-screen" : ""}`}>
@@ -30,7 +75,7 @@ export default function HomeLayout({
                 height={35}
                 className="mr-[0.8px]"
               />
-              <h1 className="text-xl">duJoy</h1>
+              <h1 className="text-xl">EcoLearn</h1>
             </Link>
           </div>
 
@@ -53,28 +98,36 @@ export default function HomeLayout({
             <ul className="flex gap-5">
               <li>
                 <Link href="/Imagen" className={`${styles.a}`}>
-                  Imagen
+                  EcoVision
                 </Link>
               </li>
               <li>
                 <Link href="/QA" className={`${styles.a}`}>
-                  Q/A
+                  EcoQ&A
                 </Link>
               </li>
               <li>
                 <Link href="/Chat" className={`${styles.a}`}>
-                  Chat
+                  EcoChat
                 </Link>
               </li>
               <li>
                 <Link href="/Rekog" className={`${styles.a}`}>
-                  Rekog
+                  EcoRekog
                 </Link>
               </li>
             </ul>
-            <UserButton />
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-              <Link href="/Contact">Contact Us</Link>
+            <div className="flex items-center space-x-3">
+              <span className="text-green-600 font-semibold text-sm">Hello, {user.username}!</span>
+              <button 
+                onClick={handleLogout}
+                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded text-sm"
+              >
+                Logout
+              </button>
+            </div>
+            <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+              <Link href="/Contact">Green Connect</Link>
             </button>
           </div>
         </div>

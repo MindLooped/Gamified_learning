@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <circle cx="30" cy="25" r="15" fill="#FFD54F" stroke="#F57C00" stroke-width="2"/>
+  <path d="M20 18 L25 22 L30 15 L35 22 L40 18" stroke="#F57C00" stroke-width="2" fill="none"/>
+  <rect x="15" y="45" width="30" height="20" rx="2" fill="#2196F3" stroke="#1976D2"/>
+  <path d="M20 50 L25 55 L30 50 L35 55 L40 50" stroke="white" stroke-width="1" fill="none"/>
+  <circle cx="70" cy="35" r="12" fill="none" stroke="#4CAF50" stroke-width="3"/>
+  <path d="M65 35 L68 38 L75 31" stroke="#4CAF50" stroke-width="2" fill="none"/>
+  <path d="M10 75 Q30 65 50 75 Q70 65 90 75" stroke="#4CAF50" stroke-width="2" fill="none"/>
+  <text x="50" y="90" text-anchor="middle" font-family="Arial" font-size="8" fill="#424242">ENERGY</text>
+</svg>
