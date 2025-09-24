@@ -87,7 +87,7 @@ const LessonCard = ({ lessonId, lessonData, courseName }: LessonCardProps) => {
           )}
 
           <div className="flex gap-2">
-            <Link href={`/lesson/${courseName}/${lessonId}`} className="flex-1">
+            <Link href={`/lessons/${courseName}/${lessonId}`} className="flex-1">
               <Button className="w-full">
                 {progress > 0 && !isCompleted ? "Continue" : isCompleted ? "Replay" : "Start"} Lesson
               </Button>
@@ -119,7 +119,16 @@ export default function LessonHub({ courseName }: LessonHubProps) {
     const completedLessons = JSON.parse(localStorage.getItem("completed_lessons") || "[]");
     const courseCompletions = completedLessons.filter((lesson: any) => lesson.courseName === courseName);
     
-    const totalPoints = courseCompletions.reduce((sum: number, lesson: any) => sum + lesson.score, 0);
+    // Get lesson points
+    const lessonPoints = courseCompletions.reduce((sum: number, lesson: any) => sum + lesson.score, 0);
+    
+    // Get quiz points for this course
+    const quizScores = JSON.parse(localStorage.getItem("ecolearn_scores") || "[]");
+    const courseQuizScores = quizScores.filter((score: any) => score.course === courseName);
+    const quizPoints = courseQuizScores.reduce((sum: number, score: any) => sum + score.score, 0);
+    
+    // Combine both lesson and quiz points
+    const totalPoints = lessonPoints + quizPoints;
     
     setUserStats({
       totalPoints,

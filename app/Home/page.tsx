@@ -185,32 +185,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Energy Conservation */}
-          <div className="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-            <div className="text-center">
-              <Image
-                src="/icons/energy_conservation.svg"
-                width={80}
-                height={80}
-                alt="energy conservation"
-                className="mx-auto mb-3 transition ease-in-out duration-500 hover:scale-110"
-              />
-              <h3 className="font-semibold text-gray-800 mb-3">Energy Conservation</h3>
-              <div className="flex flex-col gap-2">
-                <Link href="/lessons/energy_conservation">
-                  <button className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-3 rounded text-sm">
-                    🎮 Lessons
-                  </button>
-                </Link>
-                <Link href="/Courses/energy_conservation">
-                  <button className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-3 rounded text-sm">
-                    📝 Quiz
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </div>
-
           {/* Water Conservation */}
           <div className="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
             <div className="text-center">

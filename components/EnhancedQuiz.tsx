@@ -8,9 +8,10 @@ import BeginnerFriendlyQuiz from "@/components/BeginnerFriendlyQuiz";
 interface QuizProps {
   courseName: string;
   questions: any[];
+  onComplete?: (score: number) => void;
 }
 
-export default function EnhancedQuiz({ courseName, questions }: QuizProps) {
+export default function EnhancedQuiz({ courseName, questions, onComplete }: QuizProps) {
   const [showConfetti, setShowConfetti] = useState(false);
 
   console.log('🎯 EnhancedQuiz Debug:');
@@ -30,6 +31,11 @@ export default function EnhancedQuiz({ courseName, questions }: QuizProps) {
       toast.success('👏 Good job! Keep learning and improving!');
     } else {
       toast.success('📚 Nice try! Review the materials and try again!');
+    }
+
+    // Call parent's onComplete function if provided
+    if (onComplete) {
+      onComplete(score);
     }
   };
 

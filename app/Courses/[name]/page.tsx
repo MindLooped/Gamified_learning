@@ -93,6 +93,7 @@ export default function QuizPage() {
     <EnhancedQuiz
       courseName={courseName}
       questions={quizData}
+      onComplete={handleQuizComplete}
     />
   );
 }
