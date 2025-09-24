@@ -65,18 +65,6 @@ export default function Home() {
           <div className={styles.logoText}>EcoLearn</div>
         </Link>
         <div className={`${styles.navitems}`}>
-          <Link href="/Imagen" className={styles.navlist}>
-            EcoVision
-          </Link>
-          <Link href="/QA" className={styles.navlist}>
-            EcoQ&A
-          </Link>
-          <Link href="/Chat" className={styles.navlist}>
-            EcoChat
-          </Link>
-          <Link href="/Rekog" className={styles.navlist}>
-            EcoRekog
-          </Link>
           <Link href="/leaderboard" className={styles.navlist}>
             🏆 Leaderboard
           </Link>
@@ -259,6 +247,122 @@ export default function Home() {
                     📝 Quiz
                   </button>
                 </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Games Section */}
+      <div className="bg-gradient-to-r from-purple-50 to-pink-50 py-8">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">🎮 Interactive Games</h2>
+            <p className="text-gray-600 text-lg">
+              Learn through fun and engaging environmental games!
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {/* EcoCrossword Game */}
+            <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+              <div className="text-center">
+                <div className="text-5xl mb-4">🧩</div>
+                <h3 className="font-bold text-xl text-gray-800 mb-3">Eco Crossword</h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Test your environmental knowledge with our interactive crossword puzzle game!
+                </p>
+                <button 
+                  onClick={() => router.push('/games/crossword')}
+                  className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg font-medium transition-colors"
+                >
+                  Play Now
+                </button>
+              </div>
+            </div>
+
+            {/* EcoDetective Game */}
+            <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+              <div className="text-center">
+                <div className="text-5xl mb-4">🔍</div>
+                <h3 className="font-bold text-xl text-gray-800 mb-3">Eco Detective</h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Find and identify environmental hazards in different scenarios!
+                </p>
+                <button 
+                  onClick={() => router.push('/games/detective')}
+                  className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg font-medium transition-colors"
+                >
+                  Play Now
+                </button>
+              </div>
+            </div>
+
+            {/* Eco Quest Game */}
+            <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+              <div className="text-center">
+                <div className="text-5xl mb-4">🌍</div>
+                <h3 className="font-bold text-xl text-gray-800 mb-3">Eco Quest</h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Complete real-world environmental challenges and earn points!
+                </p>
+                <button 
+                  onClick={() => router.push('/games/quest')}
+                  className="w-full bg-purple-500 hover:bg-purple-600 text-white py-2 px-4 rounded-lg font-medium transition-colors"
+                >
+                  Play Now
+                </button>
+              </div>
+            </div>
+
+            {/* Climate Quiz Battle */}
+            <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+              <div className="text-center">
+                <div className="text-5xl mb-4">⚡</div>
+                <h3 className="font-bold text-xl text-gray-800 mb-3">Climate Quiz Battle</h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Competitive climate change trivia with real-time scoring!
+                </p>
+                <button 
+                  onClick={() => toast.error('Climate Quiz Battle is coming soon! Stay tuned for updates.', { duration: 3000, icon: '🎮' })}
+                  className="w-full bg-gray-400 text-white py-2 px-4 rounded-lg font-medium cursor-not-allowed"
+                >
+                  Coming Soon
+                </button>
+              </div>
+            </div>
+
+            {/* Ecosystem Builder */}
+            <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+              <div className="text-center">
+                <div className="text-5xl mb-4">🌿</div>
+                <h3 className="font-bold text-xl text-gray-800 mb-3">Ecosystem Builder</h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Build and balance your own ecosystem with different species!
+                </p>
+                <button 
+                  onClick={() => toast.error('Ecosystem Builder is coming soon! Stay tuned for updates.', { duration: 3000, icon: '🎮' })}
+                  className="w-full bg-gray-400 text-white py-2 px-4 rounded-lg font-medium cursor-not-allowed"
+                >
+                  Coming Soon
+                </button>
+              </div>
+            </div>
+
+            {/* Pollution Patrol */}
+            <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+              <div className="text-center">
+                <div className="text-5xl mb-4">🚁</div>
+                <h3 className="font-bold text-xl text-gray-800 mb-3">Pollution Patrol</h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Navigate through polluted areas and clean up the environment!
+                </p>
+                <button 
+                  onClick={() => toast.error('Pollution Patrol is coming soon! Stay tuned for updates.', { duration: 3000, icon: '🎮' })}
+                  className="w-full bg-gray-400 text-white py-2 px-4 rounded-lg font-medium cursor-not-allowed"
+                >
+                  Coming Soon
+                </button>
               </div>
             </div>
           </div>

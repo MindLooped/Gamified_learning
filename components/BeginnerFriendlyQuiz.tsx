@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import toast, { Toaster } from "react-hot-toast";
 import Confetti from "@/components/Confetti";
+import { getAdvancedGameForCourse } from "@/components/AdvancedEcoGames";
 
 // Climate Change - Carbon Footprint Relay Game
 interface CarbonFootprintRelayProps {
@@ -899,9 +900,10 @@ export default function BeginnerFriendlyQuiz({ courseName, questions, onComplete
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
-  const [gamePhase, setGamePhase] = useState<"question" | "game" | "complete">("question");
+  const [gamePhase, setGamePhase] = useState<"selection" | "question" | "game" | "advanced-game" | "complete">("selection");
   const [gameScore, setGameScore] = useState(0);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [gameMode, setGameMode] = useState<"beginner" | "advanced">("beginner");
 
   const progress = ((currentQuestion + 1) / questions.length) * 100;
 
@@ -917,8 +919,8 @@ export default function BeginnerFriendlyQuiz({ courseName, questions, onComplete
     
     setTimeout(() => {
       if (currentQuestion === questions.length - 1) {
-        // Switch to game phase
-        setGamePhase("game");
+        // Switch to appropriate game phase based on mode
+        setGamePhase(gameMode === "advanced" ? "advanced-game" : "game");
       } else {
         setCurrentQuestion(prev => prev + 1);
         setSelectedAnswer("");
@@ -940,6 +942,76 @@ export default function BeginnerFriendlyQuiz({ courseName, questions, onComplete
       onComplete(finalScore);
     }, 1000);
   };
+
+  if (gamePhase === "selection") {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 p-4">
+        <Toaster />
+        
+        <div className="max-w-4xl mx-auto text-center">
+          <Card className="p-8">
+            <CardHeader>
+              <CardTitle className="text-4xl text-green-700 mb-4">🎮 Choose Your Quiz Adventure!</CardTitle>
+              <p className="text-lg text-gray-600">
+                Select your preferred difficulty level for the {courseName} quiz experience
+              </p>
+            </CardHeader>
+            
+            <CardContent className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Beginner Mode */}
+                <button
+                  onClick={() => {
+                    setGameMode("beginner");
+                    setGamePhase("question");
+                    toast.success("🌱 Beginner Mode Selected! Fun and educational games await!");
+                  }}
+                  className="p-6 bg-green-100 hover:bg-green-200 border-2 border-green-300 rounded-xl transition-all transform hover:scale-105"
+                >
+                  <div className="text-6xl mb-4">🌱</div>
+                  <h3 className="text-2xl font-bold text-green-800 mb-3">Beginner Mode</h3>
+                  <p className="text-gray-700 mb-4">Perfect for newcomers! Simple, fun games that teach environmental basics.</p>
+                  <div className="space-y-2 text-sm text-green-700">
+                    <div>✅ Easy-to-understand games</div>
+                    <div>✅ Quick 30-60 second challenges</div>
+                    <div>✅ Immediate feedback and tips</div>
+                    <div>✅ Colorful, engaging activities</div>
+                  </div>
+                </button>
+
+                {/* Advanced Mode */}
+                <button
+                  onClick={() => {
+                    setGameMode("advanced");
+                    setGamePhase("question");
+                    toast.success("🚀 Advanced Mode Selected! Strategic environmental challenges ahead!");
+                  }}
+                  className="p-6 bg-blue-100 hover:bg-blue-200 border-2 border-blue-300 rounded-xl transition-all transform hover:scale-105"
+                >
+                  <div className="text-6xl mb-4">🚀</div>
+                  <h3 className="text-2xl font-bold text-blue-800 mb-3">Advanced Mode</h3>
+                  <p className="text-gray-700 mb-4">For eco-warriors! Complex strategy games and deeper environmental challenges.</p>
+                  <div className="space-y-2 text-sm text-blue-700">
+                    <div>🎯 Strategic gameplay</div>
+                    <div>🎯 Resource management</div>
+                    <div>🎯 Real-world scenarios</div>
+                    <div>🎯 Multi-level challenges</div>
+                  </div>
+                </button>
+              </div>
+
+              <div className="mt-8 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                <p className="text-sm text-yellow-800">
+                  💡 <strong>Tip:</strong> Both modes cover the same environmental topics but with different gameplay styles. 
+                  Choose based on your gaming preference!
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    );
+  }
 
   if (gamePhase === "complete") {
     const percentage = ((score + gameScore) / (questions.length + 2)) * 100;
@@ -1007,6 +1079,33 @@ export default function BeginnerFriendlyQuiz({ courseName, questions, onComplete
           <Card className="min-h-[500px]">
             <CardContent className="p-6">
               {getBeginnerGameForCourse(courseName, handleGameComplete)}
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    );
+  }
+
+  if (gamePhase === "advanced-game") {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 p-4">
+        <Toaster />
+        
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-6">
+            <div className="flex justify-between text-sm text-gray-600 mb-2">
+              <span>🚀 Advanced Environmental Challenge - {courseName}</span>
+              <span>Master the strategic game!</span>
+            </div>
+            <Progress value={100} className="h-3" />
+            <div className="mt-2 text-right">
+              <Badge variant="outline" className="bg-blue-100">Quiz Score: {score}/{questions.length}</Badge>
+            </div>
+          </div>
+
+          <Card className="min-h-[600px]">
+            <CardContent className="p-6">
+              {getAdvancedGameForCourse(courseName, handleGameComplete)}
             </CardContent>
           </Card>
         </div>
