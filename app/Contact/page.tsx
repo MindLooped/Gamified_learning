@@ -88,7 +88,7 @@ export default function Contact() {
               width={25}
               height={25}
             />
-            <p>+91 6281768263</p>
+            <p>+91 1234567890</p>
           </span>
           <span className="flex gap-5 align-center">
             <Image
@@ -98,58 +98,20 @@ export default function Contact() {
               width={25}
               height={25}
             />
-            <p>kanugurajesh3@gmail.com</p>
+            <p>teamhackos@gmail.com</p>
           </span>
           <span className="flex gap-5 align-center">
             <Image
               src="/instagram.png"
               className="hover:scale-110 transition ease-in-out"
-              alt="email"
+              alt="instagram"
               width={25}
               height={25}
             />
-            <Link href="https://www.instagram.com/kanugurajesh/">
-              <p>kanugurajesh</p>
+            <Link href="https://www.instagram.com/teamhackos/">
+              <p>teamhackos</p>
             </Link>
           </span>
-        </div>
-        <div className="flex gap-10">
-          <Link href="https://www.linkedin.com/in/rajesh-kanugu-aba8a3254/">
-            <Image
-              src="/linkedin-contact.png"
-              className="hover:scale-110 transition ease-in-out"
-              alt="linkedin"
-              width={35}
-              height={35}
-            />
-          </Link>
-          <Link href="https://twitter.com/exploringengin1">
-            <Image
-              src="/twitter.png"
-              className="hover:scale-110 transition ease-in-out"
-              alt="X"
-              width={35}
-              height={35}
-            />
-          </Link>
-          <Link href="https://www.instagram.com/kanugurajesh/">
-            <Image
-              src="/instagram-contact.png"
-              className="hover:scale-110 transition ease-in-out"
-              alt="github"
-              width={35}
-              height={35}
-            />
-          </Link>
-          <Link href="https://github.com/kanugurajesh/">
-            <Image
-              src="/github-contact.png"
-              className="hover:scale-110 transition ease-in-out"
-              alt="github"
-              width={35}
-              height={35}
-            />
-          </Link>
         </div>
       </div>
       <div className="flex flex-col justify-center gap-7 h-3/4">

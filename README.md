@@ -55,23 +55,23 @@ Key AI-Powered Environmental Learning Tools:
 
 <table>
   <tr>
-    <td valign="top"><img src="https://github.com/kanugurajesh/EduJoy/assets/77529419/9adc1a18-a669-4f39-8d75-8107210ff6a3" alt="kanugu rajesh" width=300 height=300></td>
-    <td valign="top"><img src="https://github.com/kanugurajesh/EduJoy/assets/77529419/ccbfc3d2-c42f-4760-b421-d9dcfc2c6cae" alt="kanugu rajesh" width=300 height=300></td>
-    <td valign="top"><img src="https://github.com/kanugurajesh/EduJoy/assets/77529419/fbf2aaa7-2bb9-4e5d-965e-856bbf6b604e" alt="kanugu rajesh" width=300 height=300></td>
+    <td valign="top"><img src="https://github.com/kanugurajesh/EduJoy/assets/77529419/9adc1a18-a669-4f39-8d75-8107210ff6a3" alt="EcoLearn platform" width=300 height=300></td>
+    <td valign="top"><img src="https://github.com/kanugurajesh/EduJoy/assets/77529419/ccbfc3d2-c42f-4760-b421-d9dcfc2c6cae" alt="EcoLearn platform" width=300 height=300></td>
+    <td valign="top"><img src="https://github.com/kanugurajesh/EduJoy/assets/77529419/fbf2aaa7-2bb9-4e5d-965e-856bbf6b604e" alt="EcoLearn platform" width=300 height=300></td>
   </tr>
   <tr>
-    <td valign="top"><img src="https://github.com/kanugurajesh/EduJoy/assets/77529419/0fd631b0-5f4d-49c0-a1de-2bcd24485c56" alt="kanugu rajesh" width=300 height=300></td>
-    <td valign="top"><img src="https://github.com/kanugurajesh/EduJoy/assets/77529419/b9c6aad7-08b0-45bc-886e-2b991cbbcffb" alt="kanugu rajesh" width=300 height=300></td>
-    <td valign="top"><img src="https://github.com/kanugurajesh/EduJoy/assets/77529419/e073b0df-3584-4c3a-8745-e3113e77dba6" alt="kanugu rajesh" width=300 height=300></td>
+    <td valign="top"><img src="https://github.com/kanugurajesh/EduJoy/assets/77529419/0fd631b0-5f4d-49c0-a1de-2bcd24485c56" alt="EcoLearn platform" width=300 height=300></td>
+    <td valign="top"><img src="https://github.com/kanugurajesh/EduJoy/assets/77529419/b9c6aad7-08b0-45bc-886e-2b991cbbcffb" alt="EcoLearn platform" width=300 height=300></td>
+    <td valign="top"><img src="https://github.com/kanugurajesh/EduJoy/assets/77529419/e073b0df-3584-4c3a-8745-e3113e77dba6" alt="EcoLearn platform" width=300 height=300></td>
   </tr>
   <tr>
-      <td valign="top"><img src="https://github.com/kanugurajesh/EduJoy/assets/77529419/0fbf745f-849e-4df8-aa62-2e9de981a444" alt="kanugu rajesh" width=300 height=300></td>
-      <td valign="top"><img src="https://github.com/kanugurajesh/EduJoy/assets/77529419/fcb6f805-4008-4096-ac4a-9b73cc8f921d" alt="kanugu rajesh" width=300 height=300></td>
-      <td valign="top"><img src="https://github.com/kanugurajesh/EduJoy/assets/77529419/304b9102-3db0-46bc-ae92-8d8fac006fe7" alt="kanugu rajesh" width=300 height=300></td>
+      <td valign="top"><img src="https://github.com/kanugurajesh/EduJoy/assets/77529419/0fbf745f-849e-4df8-aa62-2e9de981a444" alt="EcoLearn platform" width=300 height=300></td>
+      <td valign="top"><img src="https://github.com/kanugurajesh/EduJoy/assets/77529419/fcb6f805-4008-4096-ac4a-9b73cc8f921d" alt="EcoLearn platform" width=300 height=300></td>
+      <td valign="top"><img src="https://github.com/kanugurajesh/EduJoy/assets/77529419/304b9102-3db0-46bc-ae92-8d8fac006fe7" alt="EcoLearn platform" width=300 height=300></td>
   </tr>
   <tr>
-    <td valign="top"><img src="https://github.com/kanugurajesh/EduJoy/assets/77529419/24717c8f-677a-4fa3-916f-916b6b40bc79" alt="kanugu rajesh" width=300 height=300></td>
-    <td valign="top"><img src="https://github.com/kanugurajesh/EduJoy/assets/77529419/9a3eade5-bfad-4096-9b15-275cf77b27b5" alt="kanugu rajesh" width=300 height=300></td>
+    <td valign="top"><img src="https://github.com/kanugurajesh/EduJoy/assets/77529419/24717c8f-677a-4fa3-916f-916b6b40bc79" alt="EcoLearn platform" width=300 height=300></td>
+    <td valign="top"><img src="https://github.com/kanugurajesh/EduJoy/assets/77529419/9a3eade5-bfad-4096-9b15-275cf77b27b5" alt="EcoLearn platform" width=300 height=300></td>
   </tr>
 </table>
 
@@ -87,7 +87,7 @@ We welcome contributions to enhance and improve the llm app. If you have ideas o
 
 ## Feedback and Issues
 
-If you encounter any issues or have feedback, please open an issue on our [GitHub repository](https://github.com/kanugurajesh/Student-LMS/issues). We appreciate your input and strive to make our system better with each update.
+If you encounter any issues or have feedback, please open an issue on our [GitHub repository](https://github.com/MindLooped/Gamified_learning/issues). We appreciate your input and strive to make our system better with each update.
 
 ## Tech Stack
 
@@ -107,16 +107,13 @@ If you encounter any issues or have feedback, please open an issue on our [GitHu
 - React
 
 ## 🔗 Links
-[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://rajeshportfolio.me/)
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rajesh-kanugu-aba8a3254/)
-[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/exploringengin1)
+[![instagram](https://img.shields.io/badge/instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/teamhackos/)
+[![email](https://img.shields.io/badge/email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:teamhackos@gmail.com)
   
 ## Authors
 
-- [@kanugurajesh](https://github.com/kanugurajesh)
+- [@TeamHackOS](https://github.com/MindLooped)
 
 ## Support
 
-For support, you can buy me a coffee
-
-<a href="https://www.buymeacoffee.com/kanugurajen" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+For support, contact us at teamhackos@gmail.com
