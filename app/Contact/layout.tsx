@@ -97,23 +97,18 @@ export default function ContactLayout({
           >
             <ul className="flex gap-5">
               <li>
-                <Link href="/Imagen" className={`${styles.a}`}>
-                  EcoVision
+                <Link href="/leaderboard" className={`${styles.a}`}>
+                  🏆 Leaderboard
                 </Link>
               </li>
               <li>
-                <Link href="/QA" className={`${styles.a}`}>
-                  EcoQ&A
+                <Link href="/dashboard" className={`${styles.a}`}>
+                  Dashboard
                 </Link>
               </li>
               <li>
-                <Link href="/Chat" className={`${styles.a}`}>
-                  EcoChat
-                </Link>
-              </li>
-              <li>
-                <Link href="/Rekog" className={`${styles.a}`}>
-                  EcoRekog
+                <Link href="/Contact" className={`${styles.a}`}>
+                  Green Connect
                 </Link>
               </li>
             </ul>

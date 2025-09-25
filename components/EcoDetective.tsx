@@ -295,6 +295,7 @@ export const EcoDetective = ({ onBack, onPointsEarned }: EcoDetectiveProps) => {
     show: false,
     hazard: null
   });
+  const [showHazardOutlines, setShowHazardOutlines] = useState(false);
 
   const currentScene = gameScenes.find(scene => scene.level === currentLevel) || gameScenes[0];
 
@@ -319,11 +320,12 @@ export const EcoDetective = ({ onBack, onPointsEarned }: EcoDetectiveProps) => {
             {/* Clouds */}
             <div className="absolute top-12 left-48 w-20 h-10 bg-white rounded-full opacity-80"></div>
             <div className="absolute top-16 right-48 w-24 h-12 bg-white rounded-full opacity-80"></div>
-            {/* Hazards */}
-            <div className="absolute bottom-1/4 left-1/4 w-8 h-12 bg-gray-600 rounded opacity-80"></div> {/* Trash bin */}
-            <div className="absolute bottom-1/6 left-1/4 w-3 h-3 bg-red-500 rounded opacity-60"></div> {/* Trash spill */}
-            <div className="absolute bottom-1/5 right-1/3 w-3 h-6 bg-gray-300 rounded opacity-70"></div> {/* Bottle */}
-            <div className="absolute bottom-1/6 left-2/3 w-2 h-2 bg-yellow-600 rounded opacity-50"></div> {/* Cigarettes */}
+            {/* Visible Hazards - Made more prominent */}
+            <div className="absolute bottom-1/4 left-1/4 w-8 h-12 bg-gray-800 rounded border-2 border-gray-900 shadow-lg"></div> {/* Trash bin */}
+            <div className="absolute bottom-1/6 left-1/4 w-6 h-4 bg-red-600 rounded shadow-md"></div> {/* Trash spill */}
+            <div className="absolute bottom-1/5 right-1/3 w-4 h-8 bg-blue-400 rounded-full shadow-lg border-2 border-blue-600"></div> {/* Bottle */}
+            <div className="absolute bottom-1/6 left-2/3 w-4 h-3 bg-orange-500 rounded shadow-md"></div> {/* Cigarettes */}
+            <div className="absolute bottom-1/5 left-1/5 w-3 h-2 bg-yellow-700 rounded shadow-sm"></div> {/* Pet waste */}
           </div>
         );
       
@@ -342,11 +344,12 @@ export const EcoDetective = ({ onBack, onPointsEarned }: EcoDetectiveProps) => {
             {/* Palm tree */}
             <div className="absolute bottom-1/4 left-20 w-4 h-32 bg-amber-800"></div>
             <div className="absolute bottom-1/2 left-16 w-12 h-6 bg-green-600 rounded-full"></div>
-            {/* Hazards */}
-            <div className="absolute bottom-2/5 left-1/3 w-6 h-4 bg-gray-300 opacity-60 transform rotate-12"></div> {/* Plastic bag */}
-            <div className="absolute bottom-2/5 right-1/4 w-16 h-8 bg-gray-800 opacity-70 rounded-full"></div> {/* Oil spill */}
-            <div className="absolute bottom-1/3 left-1/5 w-12 h-2 bg-amber-700 opacity-80"></div> {/* Fishing net */}
-            <div className="absolute bottom-1/6 right-1/6 w-6 h-8 bg-orange-600 opacity-90"></div> {/* Chemical barrel */}
+            {/* Visible Hazards - Made more prominent */}
+            <div className="absolute bottom-2/5 left-1/3 w-8 h-6 bg-gray-100 border-2 border-gray-400 shadow-lg transform rotate-12"></div> {/* Plastic bag */}
+            <div className="absolute bottom-2/5 right-1/4 w-16 h-8 bg-black rounded-full shadow-xl border-2 border-gray-700"></div> {/* Oil spill */}
+            <div className="absolute bottom-1/3 left-1/5 w-16 h-4 bg-amber-800 shadow-lg border border-amber-900"></div> {/* Fishing net */}
+            <div className="absolute bottom-1/6 right-1/6 w-6 h-10 bg-orange-600 rounded shadow-xl border-2 border-orange-800"></div> {/* Chemical barrel */}
+            <div className="absolute bottom-1/5 left-1/4 w-8 h-4 bg-red-500 shadow-md border border-red-700"></div> {/* Beach litter */}
           </div>
         );
       
@@ -369,16 +372,15 @@ export const EcoDetective = ({ onBack, onPointsEarned }: EcoDetectiveProps) => {
             {/* Factory stacks */}
             <div className="absolute bottom-1/5 right-4 w-6 h-48 bg-gray-800"></div>
             <div className="absolute bottom-1/4 right-12 w-5 h-40 bg-gray-800"></div>
-            {/* Smoke */}
-            <div className="absolute top-8 right-4 w-8 h-6 bg-gray-600 opacity-60 rounded-full"></div>
-            <div className="absolute top-12 right-10 w-6 h-4 bg-gray-600 opacity-60 rounded-full"></div>
             {/* Car */}
             <div className="absolute bottom-1/4 left-1/3 w-16 h-6 bg-red-600 rounded"></div>
-            <div className="absolute bottom-1/5 left-1/4 w-4 h-4 bg-gray-600 opacity-60 rounded-full"></div> {/* Exhaust */}
-            {/* Hazards */}
-            <div className="absolute bottom-1/4 left-1/6 w-4 h-4 bg-gray-800 rounded-full opacity-80"></div> {/* Storm drain */}
-            <div className="absolute bottom-1/5 right-1/3 w-20 h-8 bg-yellow-500 rounded opacity-90"></div> {/* Chemical truck */}
-            <div className="absolute bottom-1/6 right-1/4 w-2 h-2 bg-green-500 opacity-70 rounded-full"></div> {/* Chemical leak */}
+            {/* Visible Hazards - Made more prominent */}
+            <div className="absolute top-8 right-4 w-12 h-16 bg-gray-800 rounded shadow-xl border-2 border-red-600"></div> {/* Factory emissions */}
+            <div className="absolute bottom-1/5 left-1/4 w-8 h-6 bg-black shadow-lg border border-gray-900 rounded-full"></div> {/* Exhaust */}
+            <div className="absolute bottom-1/4 left-1/6 w-6 h-6 bg-gray-900 rounded-full shadow-lg border-2 border-yellow-500"></div> {/* Storm drain */}
+            <div className="absolute bottom-1/5 right-1/3 w-8 h-4 bg-green-500 shadow-lg border-2 border-green-700 rounded"></div> {/* Chemical leak */}
+            <div className="absolute bottom-1/6 right-1/4 w-4 h-16 bg-yellow-400 shadow-xl border-2 border-yellow-600"></div> {/* Light pollution */}
+            <div className="absolute top-1/3 left-1/3 w-20 h-10 bg-brown-400 shadow-lg border border-brown-600 rounded opacity-80"></div> {/* Air pollution */}
           </div>
         );
       
@@ -627,7 +629,10 @@ export const EcoDetective = ({ onBack, onPointsEarned }: EcoDetectiveProps) => {
               <CardTitle className="text-2xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 🕵️ Eco Detective
               </CardTitle>
-              <p className="text-gray-600 mt-1">{currentScene.name}</p>
+              <p className="text-gray-600 mt-1">{currentScene.description}</p>
+              {gameActive && (
+                <p className="text-sm text-blue-600 mt-1">💡 Tip: Click "Show Hints" if you need help finding hazards!</p>
+              )}
             </div>
             <div className="flex items-center space-x-4">
               <Badge className={getDifficultyColor(currentScene.difficulty)}>
@@ -686,9 +691,18 @@ export const EcoDetective = ({ onBack, onPointsEarned }: EcoDetectiveProps) => {
                     </Button>
                   )}
                   {gameActive && (
-                    <Button onClick={restartLevel} variant="outline" size="sm">
-                      🔄 Restart
-                    </Button>
+                    <>
+                      <Button 
+                        onClick={() => setShowHazardOutlines(!showHazardOutlines)}
+                        variant={showHazardOutlines ? "default" : "outline"}
+                        size="sm"
+                      >
+                        {showHazardOutlines ? "🔍 Hide Hints" : "💡 Show Hints"}
+                      </Button>
+                      <Button onClick={restartLevel} variant="outline" size="sm">
+                        🔄 Restart
+                      </Button>
+                    </>
                   )}
                 </div>
               </div>
@@ -700,6 +714,52 @@ export const EcoDetective = ({ onBack, onPointsEarned }: EcoDetectiveProps) => {
                   onClick={handleSceneClick}
                 >
                   {renderSceneBackground(currentScene.backgroundImage)}
+                  
+                  {/* Unfound hazards hint overlay - visible when hints are enabled */}
+                  {gameActive && showHazardOutlines && currentScene.hazards.map(hazard => (
+                    !foundHazards.has(hazard.id) && (
+                      <div
+                        key={`hint-${hazard.id}`}
+                        className="absolute border-3 border-dashed border-yellow-400 bg-yellow-100 bg-opacity-30 rounded-lg animate-pulse hover:bg-opacity-50 transition-all duration-300"
+                        style={{
+                          left: `${hazard.x}%`,
+                          top: `${hazard.y}%`,
+                          width: `${hazard.width}%`,
+                          height: `${hazard.height}%`
+                        }}
+                        title={`Click to identify: ${hazard.name}`}
+                      >
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <span className="text-yellow-600 text-sm font-bold">🎯</span>
+                        </div>
+                        <div className="absolute -top-6 left-0 bg-yellow-600 text-white text-xs px-2 py-1 rounded whitespace-nowrap z-10">
+                          {hazard.name}
+                        </div>
+                      </div>
+                    )
+                  ))}
+                  
+                  {/* Subtle pulse indicators for hazards without full hints */}
+                  {gameActive && !showHazardOutlines && currentScene.hazards.map(hazard => (
+                    !foundHazards.has(hazard.id) && (
+                      <div
+                        key={`pulse-${hazard.id}`}
+                        className="absolute border-2 border-dashed border-red-400 bg-red-100 bg-opacity-10 rounded-lg animate-pulse hover:bg-opacity-30 transition-all duration-300"
+                        style={{
+                          left: `${hazard.x}%`,
+                          top: `${hazard.y}%`,
+                          width: `${hazard.width}%`,
+                          height: `${hazard.height}%`
+                        }}
+                        title="Environmental hazard detected - click to identify"
+                      >
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <span className="text-red-500 text-xs opacity-50">⚠️</span>
+                        </div>
+                      </div>
+                    )
+                  ))}
+                  
                   {/* Found hazards overlay */}
                   {currentScene.hazards.map(hazard => (
                     foundHazards.has(hazard.id) && (
@@ -713,7 +773,7 @@ export const EcoDetective = ({ onBack, onPointsEarned }: EcoDetectiveProps) => {
                           height: `${hazard.height}%`
                         }}
                       >
-                        <div className="absolute -top-8 left-0 bg-green-600 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
+                        <div className="absolute -top-8 left-0 bg-green-600 text-white text-xs px-2 py-1 rounded whitespace-nowrap z-10">
                           ✅ {hazard.name}
                         </div>
                       </div>

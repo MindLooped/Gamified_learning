@@ -3,11 +3,15 @@ import { useRive, useStateMachineInput } from "@rive-app/react-canvas";
 
 export default function RiveButton() {
   const { rive, RiveComponent } = useRive({
-    src: "/hero_use_case.riv",
-    artboard: "Button",
-    stateMachines: "State Machine 1",
+    src: "/bear.riv", // Temporarily use working bear animation
     autoplay: true,
     shouldDisableRiveListeners: true,
+    onLoad: () => {
+      console.log("✅ Bear button loaded successfully");
+    },
+    onLoadError: (error) => {
+      console.error("❌ Bear button failed to load:", error);
+    },
   });
 
   const isHoverInput = useStateMachineInput(rive, "State Machine 1", "isHover");

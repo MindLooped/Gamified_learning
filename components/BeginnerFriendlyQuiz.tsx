@@ -1066,14 +1066,22 @@ export default function BeginnerFriendlyQuiz({ courseName, questions, onComplete
         
         <div className="max-w-4xl mx-auto">
           <div className="mb-6">
-            <div className="flex justify-between text-sm text-gray-600 mb-2">
+            <div className="flex justify-between text-sm text-gray-600 mb-4">
               <span>🎮 Beginner-Friendly Game - {courseName}</span>
               <span>Complete the educational game!</span>
             </div>
-            <Progress value={100} className="h-3" />
-            <div className="mt-2 text-right">
-              <Badge variant="outline">Quiz Score: {score}/{questions.length}</Badge>
+            
+            {/* Large Central Score Display for Game Phase */}
+            <div className="text-center mb-4">
+              <div className="inline-flex items-center justify-center bg-gradient-to-r from-green-500 to-blue-600 text-white rounded-full px-8 py-4 shadow-lg">
+                <div className="text-center">
+                  <div className="text-3xl font-bold">📚 {score}/{questions.length}</div>
+                  <div className="text-sm font-medium opacity-90">Quiz Score</div>
+                </div>
+              </div>
             </div>
+            
+            <Progress value={100} className="h-3" />
           </div>
 
           <Card className="min-h-[500px]">
@@ -1093,14 +1101,22 @@ export default function BeginnerFriendlyQuiz({ courseName, questions, onComplete
         
         <div className="max-w-6xl mx-auto">
           <div className="mb-6">
-            <div className="flex justify-between text-sm text-gray-600 mb-2">
+            <div className="flex justify-between text-sm text-gray-600 mb-4">
               <span>🚀 Advanced Environmental Challenge - {courseName}</span>
               <span>Master the strategic game!</span>
             </div>
-            <Progress value={100} className="h-3" />
-            <div className="mt-2 text-right">
-              <Badge variant="outline" className="bg-blue-100">Quiz Score: {score}/{questions.length}</Badge>
+            
+            {/* Large Central Score Display for Advanced Game Phase */}
+            <div className="text-center mb-4">
+              <div className="inline-flex items-center justify-center bg-gradient-to-r from-purple-500 to-pink-600 text-white rounded-full px-8 py-4 shadow-lg">
+                <div className="text-center">
+                  <div className="text-3xl font-bold">🚀 {score}/{questions.length}</div>
+                  <div className="text-sm font-medium opacity-90">Quiz Score</div>
+                </div>
+              </div>
             </div>
+            
+            <Progress value={100} className="h-3" />
           </div>
 
           <Card className="min-h-[600px]">
@@ -1120,14 +1136,23 @@ export default function BeginnerFriendlyQuiz({ courseName, questions, onComplete
       
       <div className="max-w-4xl mx-auto">
         <div className="mb-6">
-          <div className="flex justify-between text-sm text-gray-600 mb-2">
+          {/* Top Header with Question Info */}
+          <div className="flex justify-between text-sm text-gray-600 mb-4">
             <span>Question {currentQuestion + 1} of {questions.length}</span>
             <span>{progress.toFixed(0)}% Complete</span>
           </div>
-          <Progress value={progress} className="h-3" />
-          <div className="mt-2 text-right">
-            <Badge variant="outline">Score: {score}</Badge>
+          
+          {/* Large Central Score Display */}
+          <div className="text-center mb-4">
+            <div className="inline-flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full px-8 py-4 shadow-lg">
+              <div className="text-center">
+                <div className="text-3xl font-bold">🏆 {score}</div>
+                <div className="text-sm font-medium opacity-90">Current Score</div>
+              </div>
+            </div>
           </div>
+          
+          <Progress value={progress} className="h-3" />
         </div>
 
         <Card className="min-h-[500px]">

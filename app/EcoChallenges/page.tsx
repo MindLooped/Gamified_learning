@@ -21,14 +21,8 @@ export default function EcoChallengesPage() {
           <Link href="/EcoDashboard" className={styles.navlist}>
             Dashboard
           </Link>
-          <Link href="/Imagen" className={styles.navlist}>
-            EcoVision
-          </Link>
-          <Link href="/QA" className={styles.navlist}>
-            EcoQ&A
-          </Link>
-          <Link href="/Chat" className={styles.navlist}>
-            EcoChat
+          <Link href="/leaderboard" className={styles.navlist}>
+            🏆 Leaderboard
           </Link>
           <UserButton />
           <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">

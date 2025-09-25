@@ -182,7 +182,7 @@ EcoQuest is a comprehensive gamified environmental education platform that trans
 
 ### Upcoming Features
 - 📱 Native mobile applications
-- 🤖 AI-powered task recommendations
+- 🎯 Smart task recommendations based on user progress
 - 🌐 Global school partnerships
 - 📊 Advanced analytics dashboard
 - 🎮 Virtual reality environmental experiences

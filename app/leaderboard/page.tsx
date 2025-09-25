@@ -311,9 +311,9 @@ export default function Leaderboard() {
                 View Dashboard
               </Button>
             </Link>
-            <Link href="/Chat">
+            <Link href="/Contact">
               <Button variant="outline" className="w-full">
-                Ask EcoChat
+                Green Connect
               </Button>
             </Link>
           </div>

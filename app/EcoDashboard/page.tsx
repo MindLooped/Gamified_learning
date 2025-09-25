@@ -88,9 +88,9 @@ export default function EcoDashboard() {
                 Energy Conservation
               </Button>
             </Link>
-            <Link href="/Chat">
+            <Link href="/leaderboard">
               <Button className="w-full bg-blue-500 hover:bg-blue-600">
-                Ask EcoChat
+                🏆 View Leaderboard
               </Button>
             </Link>
           </div>

@@ -90,7 +90,7 @@ export default function Home() {
           <div className={styles.heroheading}>
             <h1 className={styles.h1}>
               <Typewriter
-                words={["What is EcoLearn", "Environmental Education", "AI Powered", "Save Our Planet"]}
+                words={["What is EcoLearn", "Environmental Education", "Interactive Learning", "Save Our Planet"]}
                 loop={1000}
                 cursor
                 cursorStyle="_"
@@ -102,11 +102,17 @@ export default function Home() {
           </div>
           <div className={styles.wrapper}>
             <p className={`${styles.heroheading} ${styles.p}`}>
-              EcoLearn is a gamified platform where students learn about environmental science, 
-              sustainability, and climate action. Make learning about our planet as engaging as gaming 
-              with AI-powered tools and real-world environmental challenges.
+              EcoLearn is an interactive gamified learning platform that transforms environmental education 
+              through engaging games, competitive challenges, and community connections. Master climate science, 
+              sustainability practices, and eco-friendly habits while competing with peers and tracking your 
+              environmental impact journey.
             </p>
             <div className="flex gap-4 justify-center">
+              <Link href="/welcome">
+                <button className={`${styles.btnpink} bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-bold py-3 px-6 rounded-lg transform hover:scale-105 transition-all duration-200 shadow-lg`}>
+                  🚀 Explore EcoLearn
+                </button>
+              </Link>
               <Link href="/lessons/climate_change">
                 <button className={`${styles.btnpink} bg-blue-600 hover:bg-blue-700`}>
                   🎮 Interactive Lessons

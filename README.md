@@ -1,12 +1,12 @@
 #### 🌟 star the repo if you like it
 
 <div align=center>
-  <img src="https://github.com/kanugurajesh/EduJoy/assets/77529419/62dd0b07-f95b-4d19-8221-bf65bc3cace6" alt="gamified education platform powered with ai" width=150 height=150>
+  <img src="https://github.com/kanugurajesh/EduJoy/assets/77529419/62dd0b07-f95b-4d19-8221-bf65bc3cace6" alt="interactive gamified environmental education platform" width=150 height=150>
 </div>
 
 # EcoLearn: Gamified Environmental Education Platform 🌱🌍
 
-EcoLearn is a gamified environmental education platform that transforms sustainability learning into an engaging, interactive experience. Aligned with India's SDG goals and NEP 2020, it empowers students to become environmentally conscious citizens through practical learning and real-world action.
+EcoLearn is an interactive gamified learning platform that transforms environmental education through engaging games, competitive challenges, and community connections. Students master climate science, sustainability practices, and eco-friendly habits while competing with peers and tracking their environmental impact journey.
 
 ## Problem Statement �⚠️
 
@@ -18,13 +18,11 @@ As future decision-makers, students must be environmentally literate and empower
 
 ## Solution Statement 🚀🌱
 
-EcoLearn addresses this gap by providing an interactive, gamified platform that makes environmental education practical and engaging. The platform combines theoretical knowledge with real-world challenges, encouraging students to develop sustainable habits and participate in local environmental initiatives.
+EcoLearn addresses this gap through interactive gaming experiences, competitive learning environments, and community engagement features. The platform combines educational games like EcoCrossword, EcoDetective, and EcoQuest with progress tracking, leaderboards, and peer connections to make environmental learning both fun and impactful.
 
-Key AI-Powered Environmental Learning Tools:
-- **🌱 EcoVision**: Visualize environmental concepts, climate change impacts, and sustainable solutions through AI-generated images
-- **🌍 EcoChat**: Interactive AI assistant specialized in environmental education, mimicking conversations with environmental experts
-- **📚 EcoQ&A**: Comprehensive question-answering system for environmental science, sustainability, and climate change topics
-- **🔍 EcoRekog**: Analyze environmental images - identify plants, assess pollution, understand ecosystems
+Key Environmental Learning Tools:
+- **� Leaderboard**: Track your progress and compete with other environmental champions
+- **� Dashboard**: Monitor your environmental impact and learning progress
 - **📞 Green Connect**: Contact form connecting students with environmental professionals and local eco-organizations
 
 ## Features 🌟
@@ -34,7 +32,7 @@ Key AI-Powered Environmental Learning Tools:
 - **🎖️ Digital Badges & Medals**: Recognition for achievements in waste management, energy conservation, etc.
 - **🌍 Real-World Challenges**: Tree planting, waste segregation, energy conservation tracking
 - **🏫 School Competition Mode**: Enable school-level environmental competitions and leaderboards
-- **🤖 AI-Powered Learning**: Personalized environmental education with Gemini Pro integration
+- **🎮 Interactive Gaming**: Engaging games like EcoCrossword, EcoDetective, and EcoQuest
 - **📱 Mobile-Friendly Design**: Accessible on all devices for learning anywhere
 - **📊 Progress Tracking**: Monitor personal environmental impact and learning progress
 - **🌱 Local Ecosystem Focus**: Learn about regional environmental issues and solutions
@@ -93,12 +91,10 @@ If you encounter any issues or have feedback, please open an issue on our [GitHu
 
 - Next.js
 - Tailwindcss
-- Gemini Pro
-- Gemini Pro Vision
+- React
 - Rive
 - Typescript
 - API
-- Replicate
 - Markdown
 - Vercel
 - Stable Diffusion

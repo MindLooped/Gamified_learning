@@ -59,14 +59,11 @@ export default function Dashboard() {
                 <Link href="/Home" className="text-gray-700 hover:text-green-600 font-medium">
                   Explore
                 </Link>
-                <Link href="/Chat" className="text-gray-700 hover:text-green-600 font-medium">
-                  EcoChat
-                </Link>
-                <Link href="/QA" className="text-gray-700 hover:text-green-600 font-medium">
-                  EcoQ&A
-                </Link>
                 <Link href="/leaderboard" className="text-gray-700 hover:text-green-600 font-medium">
                   🏆 Leaderboard
+                </Link>
+                <Link href="/Contact" className="text-gray-700 hover:text-green-600 font-medium">
+                  Green Connect
                 </Link>
                 <Link href="/dashboard" className="text-green-600 font-medium">
                   Dashboard
@@ -143,11 +140,11 @@ export default function Dashboard() {
                       </div>
                     </Link>
                     
-                    <Link href="/Chat">
+                    <Link href="/Contact">
                       <div className="p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors cursor-pointer">
-                        <Image src="/chat.svg" width={40} height={40} alt="EcoChat" className="mb-2" />
-                        <h3 className="font-semibold text-gray-800">EcoChat</h3>
-                        <p className="text-sm text-gray-600">Ask environmental questions</p>
+                        <div className="text-4xl mb-2">📞</div>
+                        <h3 className="font-semibold text-gray-800">Green Connect</h3>
+                        <p className="text-sm text-gray-600">Connect with eco-experts</p>
                       </div>
                     </Link>
                     
